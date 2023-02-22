@@ -1,3 +1,5 @@
+
+
 import java.util.*;
 class Main{
     public static boolean valLeft(String s){
