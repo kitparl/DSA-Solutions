@@ -28,3 +28,48 @@ class Main{
         o(N,arr);
     }
 }
+
+
+
+//////////////// using hashmap
+
+
+
+
+import java.util.*;
+
+public class Main {
+    public static int getMaxOccurrence(int[] arr) {
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        int maxCount = 0;
+        int maxElement = 0;
+        
+        // Count the occurrence of each element
+        for (int i = 0; i < arr.length; i++) {
+            if (map.containsKey(arr[i])) {
+                int count = map.get(arr[i]) + 1;
+                map.put(arr[i], count);
+                
+                if (count > maxCount) {
+                    maxCount = count;
+                    maxElement = arr[i];
+                }
+            } else {
+                map.put(arr[i], 1);
+                
+                if (1 > maxCount) {
+                    maxCount = 1;
+                    maxElement = arr[i];
+                }
+            }
+        }
+        
+        return maxElement;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 4, 4, 5, 5, 6, 6, 6, 6};
+        int maxOccurrence = getMaxOccurrence(arr);
+        System.out.println("Maximum occurring element is " + maxOccurrence);
+    }
+}
